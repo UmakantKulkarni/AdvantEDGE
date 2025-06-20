@@ -272,6 +272,10 @@ func deployRunScriptsAndGetFlags(targetName string, chart string, cobraCmd *cobr
 		flags = utils.HelmFlags(flags, "--set", "persistentVolume.location="+deployData.workdir+"/couchdb/")
 	case "meep-docker-registry":
 		deployCreateRegistryCerts(chart, cobraCmd)
+		uid := utils.RepoCfg.GetString("repo.deployment.permissions.uid")
+		gid := utils.RepoCfg.GetString("repo.deployment.permissions.gid")
+		flags = utils.HelmFlags(flags, "--set", "securityContext.runAsUser="+uid)
+		flags = utils.HelmFlags(flags, "--set", "securityContext.fsGroup="+gid)
 		flags = utils.HelmFlags(flags, "--set", "persistence.location="+deployData.workdir+"/docker-registry/")
 	case "meep-grafana":
 		flags = utils.HelmFlags(flags, "--set", "persistentVolume.location="+deployData.workdir+"/grafana/")
