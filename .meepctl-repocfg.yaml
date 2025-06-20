@@ -23,9 +23,9 @@ repo:
     # permissions
     permissions:
       # user id
-      uid: 1000
+      uid: 200054
       # group id
-      gid: 1000
+      gid: 100059
 
     # user supplied resources
     user:
