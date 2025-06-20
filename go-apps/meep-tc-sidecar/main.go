@@ -139,7 +139,7 @@ var opts Opts = Opts{
 	interval:        1000 * time.Millisecond,
 	trafficInterval: 100 * time.Millisecond,
 	bind4:           "0.0.0.0",
-	bind6:           "::",
+	bind6:           "",
 	payloadSize:     56,
 	statBufferSize:  50,
 	resolverTimeout: 15000 * time.Millisecond,
